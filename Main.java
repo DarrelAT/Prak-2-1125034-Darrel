@@ -1,4 +1,4 @@
-//Level 1 (Top Level)
+
 abstract class Hewan {
     private String name;
     private int age;
@@ -44,7 +44,6 @@ abstract class Hewan {
     }
 }
 
-//Level 2 (Habitat / Kategori)
 abstract class HewanDarat extends Hewan {
     private int numberOfLegs;
 
@@ -68,6 +67,39 @@ abstract class HewanDarat extends Hewan {
     @Override
     public String printData() {
         return super.printData() + "\nJumlah Kaki: " + numberOfLegs;
+    }
+}
+
+class Anjing extends HewanDarat {
+    public Anjing(String name, int age, String food, int numberOfLegs) {
+        super(name, age, food, numberOfLegs);
+    }
+
+    @Override
+    public String printSound() {
+        return "Guk Guk";
+    }
+}
+
+class Kucing extends HewanDarat {
+    public Kucing(String name, int age, String food, int numberOfLegs) {
+        super(name, age, food, numberOfLegs);
+    }
+
+    @Override
+    public String printSound() {
+        return "Meow Meow";
+    }
+}
+
+class Tikus extends HewanDarat {
+    public Tikus(String name, int age, String food, int numberOfLegs) {
+        super(name, age, food, numberOfLegs);
+    }
+
+    @Override
+    public String printSound() {
+        return "Cit Cit";
     }
 }
 
@@ -115,43 +147,6 @@ abstract class HewanUdara extends Hewan {
     }
 }
 
-//Level 3 (Concrete Class)
-
-// --- Hewan Darat ---
-class Anjing extends HewanDarat {
-    public Anjing(String name, int age, String food, int numberOfLegs) {
-        super(name, age, food, numberOfLegs);
-    }
-
-    @Override
-    public String printSound() {
-        return "Guk Guk";
-    }
-}
-
-class Kucing extends HewanDarat {
-    public Kucing(String name, int age, String food, int numberOfLegs) {
-        super(name, age, food, numberOfLegs);
-    }
-
-    @Override
-    public String printSound() {
-        return "Meow Meow";
-    }
-}
-
-class Tikus extends HewanDarat {
-    public Tikus(String name, int age, String food, int numberOfLegs) {
-        super(name, age, food, numberOfLegs);
-    }
-
-    @Override
-    public String printSound() {
-        return "Cit Cit";
-    }
-}
-
-// --- Hewan Laut ---
 class Ikan extends HewanLaut {
     public Ikan(String name, int age, String food, double depth) {
         super(name, age, food, depth);
@@ -185,7 +180,6 @@ class Paus extends HewanLaut {
     }
 }
 
-// --- Hewan Udara ---
 class Burung extends HewanUdara {
     public Burung(String name, int age, String food, double wingSpan) {
         super(name, age, food, wingSpan);
@@ -234,9 +228,9 @@ public class Main {
             new Bebek("Donald", 2, "Dedak", 0.8)
         };
 
-        for (int i = 0; i < daftarHewan.length; i++) {
-            System.out.println(daftarHewan[i].printData());
-            System.out.println("Suara      : " + daftarHewan[i].printSound());
+        for (Hewan h : daftarHewan) {
+            System.out.println(h.printData());
+            System.out.println("Suara      : " + h.printSound());
             System.out.println("----------------------------------------");
         }
     }
